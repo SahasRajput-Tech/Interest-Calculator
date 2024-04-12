@@ -1,31 +1,30 @@
-function calculate()
+function calculate() { // Added braces around function body
 
-const totalamount = document.getElementById("Total-Amount");
-const principalInput = document.getElementById("Principal");
-const ratelInput = document.getElementById("Rate");
-const yearsInput = document.getElementById("Years");
+    const totalAmount = document.getElementById("total-amount"); // Corrected variable name and element ID
+    const principalInput = document.getElementById("principal"); // Corrected variable name and element ID
+    const rateInput = document.getElementById("rate"); // Corrected variable name and element ID
+    const yearsInput = document.getElementById("years"); // Corrected variable name and element ID
 
-let Principal = Number(principalInput.value);
-let Rate = Number(rateInput.value /100);
-let Years = Number(yearsInput.value);
+    let principal = Number(principalInput.value);
+    let rate = Number(rateInput.value / 100); // Dividing by 100 to get the decimal value of the percentage
+    let years = Number(yearsInput.value);
 
-if(Principal<0 || isNaN(Principal)){
-    Principal = 0;
-    principalInput = 0;
+    if (principal < 0 || isNaN(principal)) {
+        principal = 0;
+        principalInput.value = 0; // Corrected assignment
+    }
+
+    if (rate < 0 || isNaN(rate)) {
+        rate = 0;
+        rateInput.value = 0; // Corrected assignment
+    }
+
+    if (years < 0 || isNaN(years)) {
+        years = 0;
+        yearsInput.value = 0; // Corrected assignment
+    }
+
+    const result = principal * Math.pow((1 + rate), years); // Corrected mathematical expression
+
+    totalAmount.textContent = result.toLocaleString(undefined, { style: "currency", currency: "INR" }); // Corrected toLocaleString() method syntax
 }
-
-if(Rate<0 || isNaN(Rate)){
-    Rate = 0;
-    ratelInput = 0;
-}
-
-if(Years<0 || isNaN(Years)){
-    Years = 0;
-    yearsInput = 0;
-}
-
-const result = Principal *Math.pow((1+Rate/1),1*years);
-
-totalamount.totalcontent = result.toLocaleString(undefined
-                                                {Style: "currency"}
-                                                currency: INR)
